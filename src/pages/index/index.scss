@@ -1,0 +1,29 @@
+
+page{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container{
+    padding-top: 20%;
+    // background-color: rgb(82, 100, 158);
+    background: linear-gradient(rgb(173, 224, 255), rgb(229, 248, 255));
+    height: 100%;
+    background-size: cover;
+    .loginBtn{
+        width: 80%;
+        margin-top: 100px;
+        border-radius: 50px;
+    }
+    .at-form{
+        display: inline;
+    }
+    .at-input{
+        background-color: transparent;
+    }
+    .inputText{
+        border: none;
+    }
+}
+

@@ -1,11 +1,11 @@
 import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index'
 import { Provider } from '@tarojs/mobx'
-import counterStore from './store/counter'
+import loginStore from './store/loginStore'
 import './app.scss'
 
 const store = {
-  counterStore
+  loginStore
 }
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -18,7 +18,8 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/testUI/index'
     ],
     window: {
       backgroundTextStyle: 'light',
