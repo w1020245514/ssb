@@ -2,10 +2,12 @@ import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index'
 import { Provider } from '@tarojs/mobx'
 import loginStore from './store/loginStore'
+import homeStore from './store/homeStore'
 import './app.scss'
 
 const store = {
-  loginStore
+  loginStore:loginStore,
+  homeStore:homeStore
 }
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -18,7 +20,10 @@ class App extends Component {
 
   config = {
     pages: [
+      'pages/login/index',
       'pages/index/index',
+      'pages/home/index',
+      
       'pages/testUI/index'
     ],
     window: {
@@ -26,6 +31,36 @@ class App extends Component {
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: "#626567",
+      selectedColor: "#2A8CE5",
+      backgroundColor: "#FBFBFB",
+      borderStyle: "white",
+      list: [{
+        pagePath: "pages/home/index",
+        text: "主页",
+        iconPath: "./asset/img/index.png",
+        selectedIconPath: "./asset/img/index_focus.png"
+      },{
+        pagePath: "pages/home/index",
+        text: "消息",
+        iconPath: "./asset/img/message.png",
+        selectedIconPath: "./asset/img/message_focus.png"
+      }, 
+      {
+        pagePath: "pages/index/index",
+        text: "动态",
+        iconPath: "./asset/img/discovery.png",
+        selectedIconPath: "./asset/img/discovery_focus.png"
+      }, 
+      {
+        pagePath: "pages/testUI/index",
+        text: "我的",
+        iconPath: "./asset/img/my.png",
+        selectedIconPath: "./asset/img/my_focus.png"
+      }
+    ]
     }
   }
 
