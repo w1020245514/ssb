@@ -3,10 +3,12 @@ import Index from './pages/index'
 import { Provider } from '@tarojs/mobx'
 import loginStore from './store/loginStore'
 import homeStore from './store/homeStore'
+import taskDetailStore from './store/taskDeatilStore'
 import './app.scss'
 
 const store = {
-  loginStore:loginStore,
+  loginStore,
+  taskDetailStore,
   homeStore:homeStore
 }
 
@@ -23,7 +25,7 @@ class App extends Component {
       'pages/login/index',
       'pages/index/index',
       'pages/home/index',
-      
+      'pages/taskDetail/index',
       'pages/testUI/index'
     ],
     window: {

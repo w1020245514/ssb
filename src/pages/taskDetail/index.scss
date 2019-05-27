@@ -1,0 +1,68 @@
+.userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 100%;
+  }
+  
+  .userinfo-nickname {
+    color: #aaa;
+    height: 64rpx;
+    line-height: 64rpx;
+    font-size: 32rpx;
+  }
+
+  .task_info{
+      .task_info_title{
+          font-size: 32rpx;
+          text-align: right;
+          color: #aaa;
+      }
+      .task_info_content{
+          font-size: 32rpx;
+      }
+      .task_info_line{
+          border-bottom:rgb(204, 204, 204) 1px dashed;
+          height: 50rpx;
+      }
+  }
+  .task_time{
+      width:40%;
+      margin: 10% auto;
+      font-size: 32rpx;
+      text-align: center;
+  }
+  .task_button{
+      font-size: 32rpx;
+      text-align: center;
+      line-height: 85rpx;
+      width:40%;
+      height: 100rpx;
+      margin:0 30%;
+  }
+  .task_result{
+    color: #aaa;
+    height:120rpx;
+    .c1{
+        text-align: center;
+        vertical-align: center;
+        height: 120rpx;
+        line-height: 60rpx;
+    }
+    .c2{
+        height: 120rpx;
+        vertical-align: center;
+        .avatar{
+            height: 60rpx;
+            width: 60rpx;
+            line-height: 120rpx;
+            margin-top: 30rpx;
+        }
+    }
+    .c3{
+        line-height: 120rpx;
+        color: #aaa;
+        font-size: 32rpx;
+    }
+  }
+  
