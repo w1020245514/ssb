@@ -13,30 +13,34 @@ export default class TaskDeatil extends Component {
 	}
 
 	componentWillMount() {
-	 }
+		console.log("will mount....")
+		const { taskDetailStore } = this.props;
+		console.log("任务id：",this.$router.params);
+		taskDetailStore.getTask(this.$router.params);
+	}
 
 	componentDidMount() {
-		const { taskDetailStore } = this.props;
-		taskDetailStore.getUserInfo();
+		console.log("did mount....")
 	}
 
 	componentWillUnmount() { }
 
-	componentDidShow() { }
+	componentDidShow() {
+		console.log("did show....")
+	 }
 
 	componentDidHide() { }
 
 	render() {
-		const { taskDetailStore, taskDetailStore: { userInfo, taskDescription, taskReward, taskPlace, taskTime, userflag,taskStatus,getTask,getOpenId } } = this.props;
+		const { taskDetailStore, taskDetailStore: { userflag,taskStatus,doTask,getOpenId } } = this.props;
 		return (
 			<View className='container'>
-				{console.log("11111111111111")}
 				<View style={{ float: 'left' }}>
-					<image class="userinfo-avatar" src={userInfo.avatarUrl}></image>
+					<image class="userinfo-avatar" src={taskDetailStore.userImgSrc}></image>
 				</View>
 				<View style={{ float: 'left', margin: '20rpx' }}>
-					<View class="userinfo-nickname"><text >{userInfo.nickName}</text></View>
-					<View class="userinfo-nickname"><text >云南大学东路小区</text></View>
+					<View class="userinfo-nickname"><text >{taskDetailStore.userName}</text></View>
+					<View class="userinfo-nickname"><text >XX大学东路小区</text></View>
 				</View>
 				<View style={{ float: 'right', margin: '20rpx 50rpx' }}>
 					<text class="userinfo-nickname">29:30min</text>
@@ -46,11 +50,11 @@ export default class TaskDeatil extends Component {
 				<View className='task_info'>
 					<View className='at-row at-row__justify--center' style={{ margin: '5% 0' }}>
 						<View className='at-col-3 task_info_title'>任务详情：</View>
-						<View className='at-col-7 at-col--wrap task_info_content'>麻烦送两把伞到图书馆楼下</View>
+						<View className='at-col-7 at-col--wrap task_info_content'>{taskDetailStore.taskDescription}</View>
 					</View>
 					<View className='at-row at-row__justify--center'>
 						<View className='at-col-3 task_info_title'>赏金：</View>
-						<View className='at-col-7 at-col--wrap task_info_content'>￥三元</View>
+						<View className='at-col-7 at-col--wrap task_info_content'>￥{taskDetailStore.money}元</View>
 					</View>
 					<View className='at-row at-row__justify--center'>
 						<View className='at-col-10 task_info_line' />
@@ -59,11 +63,11 @@ export default class TaskDeatil extends Component {
 				<View className='task_info'>
 					<View className='at-row at-row__justify--center' style={{ margin: '5% 0' }}>
 						<View className='at-col-3 task_info_title'>任务地点：</View>
-						<View className='at-col-7 at-col--wrap task_info_content'>东路小区图书馆</View>
+						<View className='at-col-7 at-col--wrap task_info_content'>{taskDetailStore.taskPlace}</View>
 					</View>
 					<View className='at-row at-row__justify--center'>
 						<View className='at-col-3 task_info_title'>任务时间：</View>
-						<View className='at-col-7 at-col--wrap task_info_content'>2019/5/1  18:30之前</View>
+						<View className='at-col-7 at-col--wrap task_info_content'>{taskDetailStore.taskTime}之前</View>
 					</View>
 					<View className='at-row at-row__justify--center'>
 						<View className='at-col-10 task_info_line' />
@@ -77,7 +81,7 @@ export default class TaskDeatil extends Component {
 					/>
 				</View>
 				{userflag == '1' && taskStatus == 0 && 
-					<AtButton className="task_button" type='secondary' size="small" circle={true} onClick={() => getTask()}>抢单</AtButton>
+					<AtButton className="task_button" type='secondary' size="small" circle={true} onClick={() => doTask()}>抢单</AtButton>
 				}
 				{userflag == '1' && taskStatus == 1 && 
 					<View className='at-row at-row__justify--center task_result'>
@@ -86,10 +90,10 @@ export default class TaskDeatil extends Component {
 							<View style={{fontSize:'28rpx'}}>2019/0503</View>
 						</View>
 						<View className='at-col-1 c2'>
-							<image src={userInfo.avatarUrl} class="avatar"></image>
+							<image src={taskDetailStore.executeUserImgSrc} class="avatar"></image>
 						</View>
 						<View className='at-col-3 c3'>
-							<View style={{paddingLeft:'5rpx'}}>昵称。。</View>
+							<View style={{paddingLeft:'5rpx'}}>{taskDetailStore.executeUserName}</View>
 						</View>
 						<View className='at-col-4 c3'>
 							<View>正在执行中。。</View>

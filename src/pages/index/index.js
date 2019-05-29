@@ -32,7 +32,8 @@ export default class Login extends Component {
 
 	onSubmit(event) {
 		const { loginStore } = this.props;
-		loginStore.login(loginStore.formValue);
+		let params = {...loginStore.formValue,...this.$router.params};
+		loginStore.login(params);
 	}
 
 	render() {

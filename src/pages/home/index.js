@@ -25,7 +25,6 @@ export default class Home extends Component {
 
     componentWillUnmount() {
       const {homeStore} = this.props;
-      console.log("123");
       homeStore.clsData();
      }
 
@@ -51,14 +50,12 @@ export default class Home extends Component {
         }
         if(index!=0){
           let params = index -1;
-          console.log("index",params);
           homeStore.getTasksBytype(params);
         }
       }
       getnextPage(){
         const {homeStore} = this.props;
         homeStore.getRecommendList();
-        console.log("23");
       }
       render () {
         const { homeStore, homeStore: { tasklist } } = this.props;
@@ -100,6 +97,7 @@ export default class Home extends Component {
                         money={item.money}
                         contentPublic={item.contentPublic} 
                         tasktype = {item.tasktype}
+                        taskId = {item.id}
                         />
                     )
                   })}

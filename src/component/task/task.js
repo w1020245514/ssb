@@ -9,7 +9,7 @@ export default class Task extends Component {
   }
   render() {
     return (
-      <View className='feed-item'>
+      <View className='feed-item' onClick={this.navigateTo.bind(this,'/pages/taskDetail/index?id='+this.props.taskId)}>
         <View className='task-source'>
           <View className='avatar flex1'>
               <Image className='avatar_img' src={this.props.userImgSrc}></Image>
@@ -24,7 +24,7 @@ export default class Task extends Component {
             <View className='answer-body'>
                 <View className='top-border'>
                     <Text className='runtag-txt'>{this.props.taskttag}</Text>
-                    <Text className='content-txt' onClick={this.navigateTo.bind(this,'/pages/answer/answer')} >{this.props.contentPublic}</Text>
+                    <Text className='content-txt'  >{this.props.contentPublic}</Text>
                 </View>
                 <View className='answer-actions'>
                     <View className='like-dot'>

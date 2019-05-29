@@ -23,10 +23,10 @@ class App extends Component {
   config = {
     pages: [
       'pages/login/index',
-      'pages/index/index',
       'pages/home/index',
       'pages/taskDetail/index',
-      'pages/testUI/index'
+      'pages/testUI/index',
+      'pages/index/index'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -51,7 +51,7 @@ class App extends Component {
         selectedIconPath: "./asset/img/message_focus.png"
       }, 
       {
-        pagePath: "pages/index/index",
+        pagePath: "pages/home/index",
         text: "动态",
         iconPath: "./asset/img/discovery.png",
         selectedIconPath: "./asset/img/discovery_focus.png"
