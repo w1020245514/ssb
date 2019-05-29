@@ -13,10 +13,9 @@ export default class TaskDeatil extends Component {
 	}
 
 	componentWillMount() {
-		console.log("will mount....")
 		const { taskDetailStore } = this.props;
-		console.log("任务id：",this.$router.params);
-		taskDetailStore.getTask(this.$router.params);
+		taskDetailStore.taskId = this.$router.params.id;
+		taskDetailStore.getTask();
 	}
 
 	componentDidMount() {
@@ -33,6 +32,10 @@ export default class TaskDeatil extends Component {
 
 	render() {
 		const { taskDetailStore, taskDetailStore: { userflag,taskStatus,doTask,getOpenId } } = this.props;
+		console.log("发布人头像：",taskDetailStore.userImgSrc)
+		console.log("发布内容：",taskDetailStore.taskDescription)
+		console.log("接收人头像：",taskDetailStore.executeUserImgSrc)
+		console.log("接收人昵称：",taskDetailStore.executeUserName)
 		return (
 			<View className='container'>
 				<View style={{ float: 'left' }}>

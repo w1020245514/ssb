@@ -34,9 +34,16 @@ loginStore.login = function (params = {}) {
                 key: "user",
                 data: data.id
             }).then(rst => {  //将用户信息存入缓存中
-                Taro.switchTab({
-                    url: '/pages/testUI/index'
-                })
+                if(params.type == '1'){
+                    Taro.redirectTo({
+                        url: '/pages/taskDetail/index?id=' + params.id
+                    })
+                } else {
+                    Taro.switchTab({
+                        url: '/pages/testUI/index'
+                    })
+                }
+                
             })
         } else {
             Taro.showToast({

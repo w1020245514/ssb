@@ -2,39 +2,57 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtButton, AtSwipeAction, AtList, AtToast } from 'taro-ui'
 export default class LoadMorePage extends Taro.Component {
+
+    constructor() {
+        super(...arguments)
+        this.state = {
+            flag:true
+        }
+    }
+
     componentDidMount() {
         
     }
     componentDidShow() { 
-// Taro.getStorage("user").then(rst => {  //将用户信息存入缓存中
-        //     // Taro.navigateBack()
-        //     Taro.switchTab({
-        //         url: '/pages/home/index'
-        //     })
-        // })
-        let _Taro = Taro;
+        let _this = this;
         Taro.getStorage({
             key: 'user',
             success(res) {
+                _this.setState({
+                    flag: true
+                })
             },
             fail(res) {
-                console.log("还未登录。。。")
-                _Taro.navigateTo({
-                    url: '/pages/index/index'
+                _this.setState({
+                    flag: false
                 })
             }
         })
     }
 
+    login = () => {
+        Taro.redirectTo({
+            url: '/pages/index/index'
+        })
+
+    }
+
     lgout = () => {
-        console.log("清楚本地缓存");
+        this.setState({
+            flag: false
+        })
         Taro.clearStorage();
     }
     render() {
         return (
             <View>
-                个人信息界面
-                <AtButton className="task_button" type='secondary' size="small" circle={true} onClick={this.lgout}>退出登录</AtButton>
+                {!this.state.flag && 
+                    <AtButton className="task_button" type='secondary' size="small" circle={true} onClick={this.login}>登录</AtButton>
+                }
+                {this.state.flag && 
+                    <AtButton className="task_button" type='secondary' size="small" circle={true} onClick={this.lgout}>退出登录</AtButton>
+                }
+                
             </View>
         )
     }

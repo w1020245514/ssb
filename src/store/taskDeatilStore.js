@@ -31,9 +31,21 @@ taskDetailStore.getUserInfo = function (params = {}) {
 		}
 	})
 }
-taskDetailStore.getTask = function (params = {}) {
-	taskDetailStore.taskId = params.id;
-	Api.post('g/getTask', JSON.stringify(params)).then(data => {
+taskDetailStore.getTask = function () {
+	// taskDetailStore.taskId = params.id;
+	// Taro.getStorage({
+	// 	key: 'user',
+	// 	success(res) {
+	// 		taskDetailStore.userid = res.data;
+	// 	},
+	// 	fail(res) {
+	// 		console.log("还未登录。。。")
+	// 		Taro.navigateTo({
+	// 			url: '/pages/index/index?type=1'
+	// 		})
+	// 	}
+	// })
+	Api.post('g/getTask', JSON.stringify({id:taskDetailStore.taskId})).then(data => {
 		this.taskDescription = data.contentPublic;
 		this.taskReward = data.money;
 		this.taskPlace = data.address;
@@ -44,12 +56,7 @@ taskDetailStore.getTask = function (params = {}) {
 		this.executeUserName = data.executeUserName
 		this.executeUserImgSrc = data.executeUserImgSrc
 		this.money = data.money
-		Taro.getStorage({
-			key: 'user',
-			success(res) {
-				taskDetailStore.userid = res.data;
-			},
-		})
+		
 	})
 }
 
@@ -64,7 +71,7 @@ taskDetailStore.doTask = () => {
 				console.log("抢单params",params);
 				Api.post('g/doTask', JSON.stringify(params)).then(data => {
 					if (data.api_status == '1') {
-						taskDetailStore.getTask({id:taskDetailStore.taskId});
+						taskDetailStore.getTask();
 						Api.get('push');
 					} else {
 						Taro.showToast({
