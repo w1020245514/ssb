@@ -1,0 +1,109 @@
+.public-img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.public-text {
+  font-family: Roboto;
+  font-size: 28px;
+  line-height: 20px;
+  text-align: center;
+  margin-left: 210px;
+}
+
+.public-pay {
+  display: inline-block;
+  margin-left: 12px;
+
+  .pay-text {
+    color: rgba(5, 122, 240, 1);
+    font-size: 28px;
+    font-family: Roboto;
+
+  }
+
+  .public-number {
+    margin-left: 20px;
+    height: 60px;
+  }
+
+  .public-money {
+    display: inline-block;
+    font-family: Roboto;
+    font-size: 28px;
+    line-height: 20px;
+    color: rgba(16, 16, 16, 1);
+    text-align: center;
+    font-family: Roboto;
+  }
+}
+
+.public-private {
+
+  padding: 30px 30px 20px;
+  margin: 7px 0 6px 0;
+  background: #ffffff;
+  border-top: 3px solid #eee;
+  border-bottom: 3px solid #eee;
+  box-shadow: 0 2px 5px #eeeeee;
+}
+
+.public-private-text {
+  left: 2px;
+  top: 268px;
+  line-height: 19px;
+  color: #2991E6;
+  font-size: 28px;
+  text-align: center;
+  font-family: Roboto;
+}
+
+.public-address {
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+}
+
+.public-clock {
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+}
+
+.public-clock-text {
+  font-size: 28px;
+  text-align: center;
+  font-family: Roboto;
+
+}
+
+.public-button {
+  width: 60%;
+  margin-top: 190px;
+  border-radius: 18px;
+  background-color: rgba(143, 193, 242, 1);
+  color: rgba(247, 247, 247, 1);
+  font-size: 35px;
+  font-family: Roboto;
+  border: 1px solid rgba(187, 187, 187, 1);
+
+}
+
+.public-private-address {
+  width: 690px;
+  padding: 50px 30px 50px;
+  margin: 7px 0 6px 0;
+  background: #ffffff;
+  border-top: 3px solid #eee;
+  border-bottom: 3px solid #eee;
+  box-shadow: 0 2px 5px #eeeeee;
+}
+
+.public-public-content {
+  margin: 7px 0 6px 0;
+  background: #ffffff;
+  border-top: 3px solid #eee;
+  border-bottom: 3px solid #eee;
+  box-shadow: 0 2px 5px #eeeeee;
+}

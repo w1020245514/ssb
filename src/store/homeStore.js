@@ -9,7 +9,11 @@ const homeStore = observable({
 /**
  * 获取推荐列表
  */
-homeStore.getRecommendList = function(params ={}){
+homeStore.getRecommendList = function(params){
+   if(params){
+      this.pageNum = 1;
+      this.tasklist =[];
+   }
    let newParams = {"pageNum":this.pageNum,"pageSize":10,"taskpattern":0}
    Api.post("g/recommendTask",JSON.stringify(newParams)).then(data =>{
       data.list.map((item,index)=>{

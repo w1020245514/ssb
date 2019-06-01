@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text,ScrollView,Image,Swiper,SwiperItem} from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+import { AtFab } from 'taro-ui'
 import './index.scss'
 import img1 from '../../asset/img/24213.jpg'
 import img2 from '../../asset/img/24280.jpg'
@@ -19,8 +20,7 @@ export default class Home extends Component {
     componentWillMount() { }
 
     componentDidMount() {
-      const { homeStore } = this.props;
-      homeStore.getRecommendList();
+      
     }
 
     componentWillUnmount() {
@@ -28,13 +28,24 @@ export default class Home extends Component {
       homeStore.clsData();
      }
 
-    componentDidShow() { }
+    componentDidShow() { 
+      console.log("taskdidmount")
+      const { homeStore } = this.props;
+      homeStore.getRecommendList(true);
+    }
 
     componentDidHide() { }
+
+    componentWillReceiveProps(newProps){
+      if(newProps.location.key !== this.props.location.key){
+          console.log("rexc");
+      }
+    }
+
     constructor() {
         super(...arguments)
         this.state = {
-          imgUrls: [img1,img2,img3],
+          imgUrls: [img1,'https://image.baidu.com/search/detail?ct=503316480&z=&tn=baiduimagedetail&ipn=d&word=banner%E5%9B%BE%20%E5%AD%A6%E6%A0%A1&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=-1&hd=&latest=&copyright=&cs=3132951019,241887644&os=2825701712,3889531474&simid=0,0&pn=9&rn=1&di=1430&ln=1367&fr=&fmq=1559188360452_R&ic=&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=2&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&hs=2&objurl=http%3A%2F%2Fpic.97uimg.com%2Fback_pic%2F20%2F16%2F01%2F02%2Fa364d4c7405bee603617ce084ec45c6d.jpg%2521w1200&rpstart=0&rpnum=0&adpicid=0&force=undefined'],
           currentNavtab: 0,
           navTab: ['推荐', '跑腿', '求助', '资源'],
         }
@@ -46,7 +57,7 @@ export default class Home extends Component {
         })
         homeStore.clsData();
         if(index==0){
-          homeStore.getRecommendList();
+          homeStore.getRecommendList(true);
         }
         if(index!=0){
           let params = index -1;
@@ -56,6 +67,11 @@ export default class Home extends Component {
       getnextPage(){
         const {homeStore} = this.props;
         homeStore.getRecommendList();
+      }
+      publictask =()=>{
+        Taro.navigateTo({
+          url: '/pages/public/index'
+        })
       }
       render () {
         const { homeStore, homeStore: { tasklist } } = this.props;
@@ -93,7 +109,7 @@ export default class Home extends Component {
                         username={item.userName}
                         school={"云南大学"}
                         taskttag={taskUtils.convertTaskType(item.tasktype)}
-                        goodNum={taskUtils.convertTaskStatus(item.taskStatus)}
+                        taskStatus={taskUtils.convertTaskStatus(item.taskStatus)}
                         money={item.money}
                         contentPublic={item.contentPublic} 
                         tasktype = {item.tasktype}
@@ -102,15 +118,11 @@ export default class Home extends Component {
                     )
                   })}
               </View>
-                {/* <View className='txcenter' hidden={this.state.currentNavtab==1 ? false : true}>
-                  <Text>圆桌</Text>
-                </View>
-                <View className='txcenter' hidden={this.state.currentNavtab==2 ? false : true}>
-                  <Text>热门</Text>
-                </View>
-                <View className='txcenter' hidden={this.state.currentNavtab==3 ? false : true}>
-                  <Text>收藏</Text>
-                </View> */}
+              <View className='Attab'>
+              <AtFab onClick={this.publictask} size='small' >
+                <Text className='at-fab__icon at-icon at-icon-add' ></Text>
+              </AtFab>
+              </View>
             </ScrollView>
           </View>
         )

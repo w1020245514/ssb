@@ -26,5 +26,20 @@ export default {
         if(tasktype == 2){
             return "资源";
         }
+    },
+    convertTaskTypeStyle(tasktype){
+        let color = "rgba(255, 64, 129, 1)";
+
+        if(tasktype == 1){
+            color = "rgba(3, 169, 244, 1)"; 
+        }
+        if(tasktype == 2){
+            color ="#424242"; 
+        }
+        let tagstyle = {
+            'color':color,
+            'border-color':color,
+          };
+          return tagstyle;
     }
 }

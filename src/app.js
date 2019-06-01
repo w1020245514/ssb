@@ -4,12 +4,15 @@ import { Provider } from '@tarojs/mobx'
 import loginStore from './store/loginStore'
 import homeStore from './store/homeStore'
 import taskDetailStore from './store/taskDeatilStore'
+import publicStore from './store/publicStore'
 import './app.scss'
 
 const store = {
   loginStore,
   taskDetailStore,
-  homeStore:homeStore
+  homeStore:homeStore,
+  publicStore:publicStore,
+
 }
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -24,6 +27,7 @@ class App extends Component {
     pages: [
       'pages/login/index',
       'pages/home/index',
+      'pages/public/index',
       'pages/taskDetail/index',
       'pages/testUI/index',
       'pages/index/index'
